@@ -8,7 +8,7 @@ const spaceController = new SpaceController();
 routes.get('/', (req, res) => spaceController.listAll(req, res));
 routes.get('/space/next', (req, res) => spaceController.getNext(req, res));
 routes.get('/space/', (req, res) => spaceController.findOneByName(req, res));
-
+routes.get('/space/:id', (req, res) => spaceController.findOneById(req, res));
 //POST
 routes.post('/space', (req, res) => spaceController.create(req, res));
 

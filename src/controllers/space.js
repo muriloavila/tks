@@ -54,10 +54,19 @@ class SpaceController {
 
     async delete(req, res) {
         try {
-            const space = await Space.delete({_id: req.params.id});
+            const space = await Space.findOneAndRemove({_id: req.params.id});
             return res.status(200).send({});
         } catch (error) {
-            return res.status(500).send({error: 'Space not deleted'});
+            return res.status(500).send({error: error.message});
+        }
+    }
+
+    async findOneById(req, res) {
+        try {
+            const space = await Space.findById(req.params.id);
+            return res.status(200).send(space);
+        } catch (error) {
+            return res.status(404).send({ error: 'Space not found' });
         }
     }
 }
