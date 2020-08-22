@@ -6,7 +6,7 @@ const middleware = async (req, res, next) => {
         
         await userCliente.validToken({authHeader: authHeader}, (err, response) => {
             if(err || !response.user) 
-                res.send(err);
+                res.status(401).send(err);
             else
                 next();
         }); 
