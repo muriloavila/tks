@@ -32,7 +32,8 @@ class SpaceController {
     //findNext
     async getNext(req, res) {
         try {
-            const nextSpace = await Space.findOne({projeto: ""});
+            var random = Math.floor(Math.random() * 5)
+            const nextSpace = await Space.findOne({projeto: ""}).skip(random);
             return res.status(200).send({space: nextSpace});
         } catch (error) {
             return res.status(404).send({ error: 'Space not found' });
