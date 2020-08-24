@@ -14,6 +14,7 @@ routes.post('/space', (req, res) => spaceController.create(req, res));
 
 //PUT
 routes.patch('/space', (req, res) => spaceController.update(req, res));
+routes.patch('/space/:id', (req, res) => spaceController.updateById(req, res));
 
 //DELETE
 routes.delete('/space/:id', (req, res) => spaceController.delete(req, res));

@@ -52,6 +52,19 @@ class SpaceController {
         }
     }
 
+    async updateById(req, res) {
+        try {
+            const space = await Space.findOneAndUpdate({_id: req.params.id}, req.body, (err, doc) => {
+                if(err){
+                    return res.send(500, {error: 'Space not Updated'});
+                }
+                return res.status(202).send({space: doc});
+            });
+        } catch (error) {
+            return res.status(404).send({ error: 'Space not find' });
+        }
+    }
+
     async delete(req, res) {
         try {
             const space = await Space.findOneAndRemove({_id: req.params.id});
